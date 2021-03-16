@@ -1,34 +1,89 @@
 <ion-header>
   <ion-toolbar>
-    <ion-buttons slot="start">
-      <ion-menu-button></ion-menu-button>
-    </ion-buttons>
-    <ion-title>Support</ion-title>
+    <ion-title>Settings</ion-title>
+    <ion-icon name="information-circle-outline" slot="end" size="large"
+      class="icon-toolbar-padding" color="primary" (click)="openImplModal()">
+    </ion-icon>
   </ion-toolbar>
-
 </ion-header>
 
 <ion-content>
-  <div class="support-logo">
-    <img src="assets/img/appicon.svg" alt="Ionic Logo">
-  </div>
+  <ion-list-header>
+    <ion-label class="ion-text-uppercase" color="ios-lh-labl-gray">
+      User Details
+    </ion-label>
+  </ion-list-header>
+  <ion-list *ngIf="user">
+    <ion-item lines="full">
+      <ion-avatar slot="start">
+        <img src="{{ user.picture }}" />
+      </ion-avatar>
+      <ion-label>
+        <h2>{{ user.name }}</h2>
+        <p>{{ user.email }}</p>
+      </ion-label>
+      <div class="center">
+        <ion-button (click)="signOut()" fill="clear">Log out</ion-button>
+      </div>
+    </ion-item>
+  </ion-list>
+  <ion-list *ngIf="!user">
+    <ion-item lines="full">
+      <a class="link" (click)="logIn()">Log in to view</a>
+    </ion-item>
+  </ion-list>
 
-  <form #submitForm="ngForm" novalidate (ngSubmit)="submit(submitForm)">
-    <ion-list lines="none">
-      <ion-item>
-        <ion-label position="stacked" color="primary">Enter your support message below</ion-label>
-        <ion-textarea [(ngModel)]="supportMessage" name="supportQuestion" #supportQuestion="ngModel" rows="6" required></ion-textarea>
-      </ion-item>
-    </ion-list>
+  <ion-list-header>
+    <ion-label class="ion-text-uppercase" color="ios-lh-labl-gray">
+      Communications
+    </ion-label>
+  </ion-list-header>
+  <ion-list>
+    <ion-item>
+      <ion-icon name="send" slot="start" color="medium"></ion-icon>
+      <ion-label>Push Notifications</ion-label>
+      <ion-toggle slot checked></ion-toggle>
+    </ion-item>
+    <ion-item>
+      <ion-icon name="mail" slot="start" color="medium"></ion-icon>
+      <ion-label>Email</ion-label>
+      <ion-toggle slot></ion-toggle>
+    </ion-item>
+    <ion-item lines="full">
+      <ion-icon name="chatbox-ellipses" slot="start" color="medium"></ion-icon>
+      <ion-label>SMS</ion-label>
+      <ion-toggle slot checked></ion-toggle>
+    </ion-item>
+    <ion-item lines="full">
+      <ion-icon name="Checkbox" slot="start" color="medium"></ion-icon>
+      <ion-label>Checkbox</ion-label>
+      <ion-checkbox></ion-checkbox>
+    </ion-item>
+    <!-- Default Checkbox -->
 
-    <ion-text color="danger">
-      <p [hidden]="supportQuestion.valid || submitted === false" class="ion-padding-start">
-        Support message is required
+
+  </ion-list>
+
+  <ion-card>
+    <ion-card-header>
+      <ion-card-subtitle>Voya Demo App</ion-card-subtitle>
+      <ion-card-title>Version 0.0.5</ion-card-title>
+    </ion-card-header>
+
+    <ion-card-content>
+      An Ionic 5 + Capacitor Voya demo app built by the Ionic team to demonstrate various
+      native plugin and performance capabilities.
+      <p class="card-padding">
+        Interested in learning how Ionic can help your business?
       </p>
-    </ion-text>
-
-    <div class="ion-padding">
-      <ion-button expand="block" type="submit">Submit</ion-button>
-    </div>
-  </form>
+      <div class="center">
+        <ion-button
+          fill="clear"
+          href="https://ionicframework.com/sales?product_of_interest=Ionic%20Enterprise%20Engine&utm_source=demo-app&utm_medium=referral&utm_campaign=enterprise&utm_content=ionifits"
+        >
+          Contact Us
+        </ion-button>
+      </div>
+    </ion-card-content>
+  </ion-card>
 </ion-content>

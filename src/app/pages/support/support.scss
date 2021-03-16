@@ -1,13 +1,28 @@
-.support-logo {
-  padding: 20px 0;
-  min-height: 200px;
+ion-content {
+  --background: #F2F2F7;
+}
+
+/* Workaround for Ionic bug where Card color is set to gray due to 
+   ion-content background rule above */
+ion-card {
+  --background: white !important;
+}
+
+.center {
   text-align: center;
 }
 
-.support-logo img {
-  max-width: 150px;
+.card-padding{
+  padding-top: 30px;
 }
 
-.list {
-  margin-bottom: 0;
+.log-in-padding {
+  display: block;
+  margin-top: 20px;
+  margin-left: 20px;
+}
+
+.link {
+  font-size: 14px;
+  text-transform: uppercase;
 }

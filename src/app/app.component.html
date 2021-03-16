@@ -2,15 +2,23 @@
   <ion-split-pane contentId="main-content">
 
     <ion-menu contentId="main-content">
+      
       <ion-content>
+        <ion-item class="menu-header">
+          <ion-toolbar>
+            <img src="https://cdn.voya.com/global/images/logo/1.0.1/logo.svg">
+          </ion-toolbar>
+        </ion-item>    
         <ion-list lines="none">
           <ion-list-header>
-            Conference
+            <ion-item>
+              <ion-label>Voya Financial Services </ion-label>
+            </ion-item>
           </ion-list-header>
           <ion-menu-toggle autoHide="false" *ngFor="let p of appPages; let i = index">
             <ion-item [routerLink]="p.url" routerLinkActive="selected" routerDirection="root" detail="false">
               <ion-icon slot="start" [name]="p.icon + '-outline'"></ion-icon>
-              <ion-label>
+              <ion-label> 
                 {{p.title}}
               </ion-label>
             </ion-item>
@@ -95,12 +103,12 @@
 
         <ion-list lines="none">
           <ion-list-header>
-            Tutorial
+            Investment Plan
           </ion-list-header>
           <ion-menu-toggle autoHide="false">
             <ion-item button (click)="openTutorial()" detail="false">
               <ion-icon slot="start" name="hammer"></ion-icon>
-              <ion-label>Show Tutorial</ion-label>
+              <ion-label>Show Plans</ion-label>
             </ion-item>
           </ion-menu-toggle>
         </ion-list>
